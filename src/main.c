@@ -54,15 +54,15 @@ int main(int argc, char *argv[]) {
 
     if (log_path != NULL) {
         freopen(log_path, "a", stdout);
-        print_users();
-        print_processes();
     }
 
     if (error_path != NULL) {
         freopen(error_path, "a", stderr);
-        if (ftell(stderr) == 0) {
-            fprintf(stderr, "Без ошибок\n");
-        }
+    }
+
+    if (log_path != NULL) {
+        print_users();
+        print_processes();
     }
 
     return 0;
