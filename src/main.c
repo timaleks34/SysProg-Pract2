@@ -46,6 +46,9 @@ int main(int argc, char *argv[]) {
                 }
                 break;
             default:
+                if (error_path != NULL) {
+                    freopen(error_path, "a", stderr);
+                }
                 fprintf(stderr, "Неизвестная опция -%c\n", optopt);
                 print_help();
                 return 1;
@@ -53,7 +56,7 @@ int main(int argc, char *argv[]) {
     }
 
     if (log_path != NULL) {
-        freopen(log_path, "a", stdout);
+        freopen(log_path, "w", stdout);
     }
 
     if (error_path != NULL) {
